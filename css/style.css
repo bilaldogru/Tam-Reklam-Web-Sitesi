@@ -19,7 +19,7 @@ a:active {
     --bg-white: #ffffff;
     --bg-cream: #faf9f6;
     --gold-accent: #D4AF37;
-    /* YENİ EKLENEN RENKLER */
+    /* YENİ EKLENEN RENKLER (Tam sayfa kahverengi alanlar için) */
     --dark-brown: #2A1F1A;
     --darker-brown: #1C130F;
 }
@@ -481,7 +481,7 @@ body::before {
 }
 
 /* =========================================
-   YENİ EKLENEN BÖLÜMLER
+   YENİ EKLENEN BÖLÜMLER (SİYAH İKONLAR, TAM EKRAN KAHVERENGİ, UZUN ÇERÇEVELER)
 ========================================= */
 
 /* --- HİZMETLERİMİZ --- */
@@ -525,16 +525,8 @@ body::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-    border-color: var(--gold-accent);
-}
-
 .service-card .icon-box {
-    font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--gold-accent);
     width: 60px;
     height: 60px;
     border: 1px solid #eaeaea;
@@ -542,6 +534,19 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* İkonların KESİNLİKLE SİYAH olmasını sağlayan kod */
+.service-card .icon-box svg {
+    width: 30px;
+    height: 30px;
+    stroke: #000000;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .icon-box svg {
+    stroke: var(--gold-accent);
+    /* Üzerine gelince altın olur */
 }
 
 .service-card h3 {
@@ -555,11 +560,14 @@ body::before {
     color: var(--text-gray);
 }
 
-/* --- PORTFOLYO --- */
+/* --- PORTFOLYO (TAM GENİŞLİK, UZUN FOTOĞRAFLAR) --- */
 .portfolio-section {
     background-color: var(--dark-brown);
+    /* Sayfanın TAMAMINI kahverengi yapar */
+    width: 100%;
     color: var(--white);
-    padding: 6rem 0;
+    padding: 8rem 0;
+    /* Bölümü aşağıya doğru uzatır */
 }
 
 .portfolio-header {
@@ -592,20 +600,20 @@ body::before {
     font-size: 1.05rem;
 }
 
+/* TEKLİF ALIN BUTONU HEP ALTIN SARISI KALACAK */
 .btn-outline {
     display: inline-block;
     padding: 15px 30px;
-    border: 1px solid var(--gold-accent);
+    border: 1px solid var(--gold-accent) !important;
     border-radius: 30px;
-    color: var(--gold-accent);
+    color: var(--gold-accent) !important;
     font-size: 0.95rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-    background: var(--gold-accent);
-    color: var(--dark-brown);
+    background: rgba(212, 175, 55, 0.1);
 }
 
 .portfolio-gallery {
@@ -614,101 +622,71 @@ body::before {
     gap: 2.5rem;
 }
 
+/* RESİMLER AŞAĞIYA DOĞRU UZATILDI */
 .gallery-item img {
     width: 100%;
+    height: 550px;
+    /* Fotoğrafların uzunluğunu ayarladık, ezilmez */
     border-radius: 16px;
     object-fit: cover;
+    /* Sündürmeden kırpar */
     transition: 0.4s;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .gallery-item img:hover {
     transform: scale(1.02);
+    border-color: var(--gold-accent);
 }
 
-/* --- REFERANSLAR --- */
+
+/* --- REFERANSLAR (ESKİ HALİ - SADECE MARKA LOGOLARI) --- */
 .testimonials-section {
     padding: 6rem 0;
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    margin-bottom: 5rem;
-}
-
-.review-card {
-    background: var(--white);
-    padding: 3rem 2.5rem;
-    border-radius: 20px;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-}
-
-.stars {
-    color: var(--gold-accent);
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-}
-
-.review-card p {
-    font-size: 1rem;
-    color: var(--text-gray);
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
-    font-style: italic;
-}
-
-.author {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #e8e2d8;
-    color: var(--dark-brown);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-}
-
-.author-info strong {
-    display: block;
-    font-size: 0.95rem;
-    color: #111;
-}
-
-.author-info span {
-    font-size: 0.85rem;
-    color: #888;
+    background-color: var(--bg-cream);
 }
 
 .brands-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 3rem;
+    background-color: var(--bg-cream);
+    padding: 2.5rem 2rem;
+    margin-top: 2rem;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: #999;
-    letter-spacing: 5px;
+    font-size: 1.5rem;
+    color: #888;
+    letter-spacing: 3px;
+    overflow: hidden;
 }
 
-/* --- İLETİŞİM VE FOOTER (GÜNCELLENDİ) --- */
+/* Referans Kutusu Animasyonu */
+.brands-row::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(90deg, #e0e0e0 0%, #e0e0e0 40%, var(--gold-accent) 50%, #e0e0e0 60%, #e0e0e0 100%);
+    background-size: 200% auto;
+    animation: goldShineReverse 3s linear infinite;
+    z-index: -1;
+    border-radius: 22px;
+}
+
+
+/* --- İLETİŞİM VE FOOTER (TAM GENİŞLİK KAHVERENGİ) --- */
 .site-footer {
     background-color: var(--dark-brown);
-    /* GÜNCELLEME: Fotoğraftaki derin kahverengi */
+    /* GÜNCELLEME: Tüm alanı kahverengi yapar */
+    width: 100%;
     color: #fff;
-    padding: 6rem 0 0 0;
+    padding: 8rem 0 0 0;
+    /* Bölümü aşağıya uzatır */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -747,7 +725,6 @@ body::before {
     gap: 1.5rem;
     padding: 20px 25px;
     background-color: var(--darker-brown);
-    /* GÜNCELLEME: Kutular daha koyu kahve */
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.4s ease;
@@ -793,7 +770,6 @@ body::before {
     overflow: hidden;
     position: relative;
     border: 2px solid var(--gold-accent);
-    /* GÜNCELLEME: Haritaya altın sarısı çerçeve */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
 }
@@ -845,9 +821,7 @@ body::before {
         grid-template-columns: 1fr;
     }
 
-    /* YENİ BÖLÜMLER İÇİN MOBİL UYUM */
-    .services-grid,
-    .reviews-grid {
+    .services-grid {
         grid-template-columns: 1fr;
     }
 
