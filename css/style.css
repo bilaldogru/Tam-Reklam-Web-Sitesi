@@ -875,9 +875,12 @@ body::before {
 
 /* --- MOBİL UYUMLULUK --- */
 @media (max-width: 900px) {
-    /* Genel Boşluk (Padding) Düzeltmeleri */
-    .about-section, .services-section, .testimonials-section, .full-portfolio-section {
+    /* Genel Boşluk Düzeltmeleri */
+    .services-section, .testimonials-section {
         padding: 3rem 0;
+    }
+    .full-portfolio-section {
+        padding: 2rem 0 4rem 0;
     }
     .portfolio-section {
         padding: 4rem 0 6rem 0;
@@ -889,18 +892,18 @@ body::before {
     /* Üst Alan Düzeltmeleri */
     .top-bar {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
         text-align: center;
     }
     .header-quick-contact {
         align-items: center;
     }
     .logo-center h1 {
-        font-size: 2rem;
-        padding: 5px 20px;
+        font-size: 1.8rem;
+        padding: 5px 15px;
     }
     .slogan {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     .header-social {
         justify-content: center;
@@ -920,24 +923,68 @@ body::before {
     .dropdown-content {
         min-width: 150px;
     }
+    
+    /* Yaptığımız İşler menüsüne tıklayınca site kaymasın, sadece menü açılsın */
+    .dropdown > a.dropbtn {
+        pointer-events: none;
+    }
+    .dropdown {
+        cursor: pointer;
+    }
 
-    /* Biz Kimiz Düzeltmeleri */
+    /* BİZ KİMİZ (Ekrana Tam Sığdırma) */
+    .about-section {
+        padding: 2rem 0;
+    }
     .about-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .about-logo-wrapper {
-        justify-content: center;
+        gap: 1rem;
     }
     .about-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    .editorial-paragraph {
+        margin-bottom: 10px;
+    }
+    .editorial-paragraph p {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+    .drop-cap {
         font-size: 2.5rem;
     }
     .about-features {
         flex-wrap: wrap;
+        margin-bottom: 5px;
+        gap: 10px;
+        justify-content: center;
+    }
+    .about-features li {
+        font-size: 0.8rem;
+    }
+    .about-logo-wrapper {
+        justify-content: center;
+        margin: 5px 0;
     }
     .about-large-logo {
-        max-height: 250px;
-        margin: 0 auto;
+        max-height: 120px;
+        border-radius: 10px;
+    }
+    .about-stats {
+        padding-top: 10px;
+        gap: 10px;
+    }
+    .stat-box {
+        padding: 10px 15px;
+        min-width: auto;
+        flex: 1;
+    }
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    .stat-text {
+        font-size: 0.65rem;
     }
 
     /* Hizmetler Düzeltmeleri */
@@ -948,7 +995,7 @@ body::before {
         grid-template-columns: 1fr;
     }
 
-    /* Portfolyo & Alt Sayfa Galeri Düzeltmeleri */
+    /* Ana Sayfa Portfolyo Düzeltmeleri */
     .portfolio-header {
         flex-direction: column;
         align-items: center;
@@ -956,7 +1003,7 @@ body::before {
         gap: 1rem;
     }
     .portfolio-header h2 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     .btn-outline {
         position: static;
@@ -964,36 +1011,54 @@ body::before {
     }
     .portfolio-gallery {
         grid-template-columns: 1fr;
-        margin-top: 3rem;
+        margin-top: 2rem;
         gap: 1.5rem;
     }
     .gallery-item:nth-child(n) img {
-        height: 300px;
+        height: 250px;
         width: 100%;
         transform: none !important;
         margin: 0;
     }
+
+    /* ALT SAYFALAR: Kategoriler Sekmesinde Fotolar TEK SATIR (Yan Yana Scroll) */
     .masonry-gallery {
-        grid-template-columns: 1fr;
-        margin-top: 3rem;
-        gap: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+        scroll-snap-type: x mandatory;
+        
+        /* Grid kapalı */
+        grid-template-columns: none;
     }
     .gallery-box {
+        min-width: 85vw; /* Fotoların yanına diğerinin azıcık görünmesi için 85% */
         height: 350px;
+        scroll-snap-align: center;
+        flex: 0 0 auto;
     }
-    
-    /* Mobilde Hover Olmadığı İçin Açıklamaları Sürekli Görünür Yapıyoruz */
+
+    /* Fotoğraflar Üzerindeki Yazılar Görünmesin Sadece Başlıklar Görünsün */
     .project-card-content {
         opacity: 1 !important;
         transform: translateY(0) !important;
         padding: 1.5rem;
-        background: linear-gradient(0deg, rgba(28, 19, 15, 0.95) 0%, rgba(28, 19, 15, 0.4) 100%);
+        background: linear-gradient(0deg, rgba(28, 19, 15, 0.95) 0%, rgba(28, 19, 15, 0) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .project-card-content p {
+        display: none !important; /* YAZILARI GİZLE */
     }
     .project-card-content h3 {
         font-size: 1.5rem;
-    }
-    .project-card-content p {
-        font-size: 0.9rem;
+        text-align: center;
+        margin-bottom: 0;
     }
 
     /* Referanslar Düzeltmeleri */
@@ -1012,7 +1077,7 @@ body::before {
         margin-bottom: 2rem;
     }
     .footer-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
         text-align: center;
     }
     .footer-desc {
