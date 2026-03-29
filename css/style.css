@@ -875,55 +875,164 @@ body::before {
 
 /* --- MOBİL UYUMLULUK --- */
 @media (max-width: 900px) {
+    /* Genel Boşluk (Padding) Düzeltmeleri */
+    .about-section, .services-section, .testimonials-section, .full-portfolio-section {
+        padding: 3rem 0;
+    }
+    .portfolio-section {
+        padding: 4rem 0 6rem 0;
+    }
+    .site-footer {
+        padding: 4rem 0 0 0;
+    }
+
+    /* Üst Alan Düzeltmeleri */
     .top-bar {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         text-align: center;
     }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .header-quick-contact {
+        align-items: center;
     }
-
-    .map-wrapper {
-        height: 350px;
+    .logo-center h1 {
+        font-size: 2rem;
+        padding: 5px 20px;
     }
-
-    .header-logo-img,
+    .slogan {
+        font-size: 0.85rem;
+    }
     .header-social {
         justify-content: center;
     }
 
+    /* Navigasyon (Menü) Düzeltmeleri */
     .category-nav {
         flex-wrap: wrap;
-        gap: 1rem;
-        position: relative;
+        gap: 0.5rem;
+        padding: 1rem;
+        justify-content: center;
+    }
+    .category-nav > a, .dropbtn {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+    .dropdown-content {
+        min-width: 150px;
     }
 
-    .about-content,
-    .portfolio-grid {
+    /* Biz Kimiz Düzeltmeleri */
+    .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-logo-wrapper {
+        justify-content: center;
+    }
+    .about-text h2 {
+        font-size: 2.5rem;
+    }
+    .about-features {
+        flex-wrap: wrap;
+    }
+    .about-large-logo {
+        max-height: 250px;
+        margin: 0 auto;
     }
 
+    /* Hizmetler Düzeltmeleri */
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
     .services-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Portfolyo & Alt Sayfa Galeri Düzeltmeleri */
     .portfolio-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+    .portfolio-header h2 {
+        font-size: 2.5rem;
+    }
+    .btn-outline {
+        position: static;
+        margin-top: 1rem;
+    }
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+        margin-top: 3rem;
         gap: 1.5rem;
     }
+    .gallery-item:nth-child(n) img {
+        height: 300px;
+        width: 100%;
+        transform: none !important;
+        margin: 0;
+    }
+    .masonry-gallery {
+        grid-template-columns: 1fr;
+        margin-top: 3rem;
+        gap: 1.5rem;
+    }
+    .gallery-box {
+        height: 350px;
+    }
+    
+    /* Mobilde Hover Olmadığı İçin Açıklamaları Sürekli Görünür Yapıyoruz */
+    .project-card-content {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        padding: 1.5rem;
+        background: linear-gradient(0deg, rgba(28, 19, 15, 0.95) 0%, rgba(28, 19, 15, 0.4) 100%);
+    }
+    .project-card-content h3 {
+        font-size: 1.5rem;
+    }
+    .project-card-content p {
+        font-size: 0.9rem;
+    }
 
-    .brands-row {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+    /* Referanslar Düzeltmeleri */
+    .brands-track {
+        gap: 3rem;
+        padding-right: 3rem;
+    }
+    .brands-track img {
+        height: 40px;
+    }
+
+    /* Footer & İletişim Düzeltmeleri */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    .footer-title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .footer-desc {
+        text-align: center;
+    }
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 15px;
+    }
+    .contact-item:hover {
+        transform: translateY(-5px);
+    }
+    .map-wrapper {
+        height: 300px;
     }
 
     body::before {
-        font-size: 25vw;
+        font-size: 20vw;
     }
 }
 
