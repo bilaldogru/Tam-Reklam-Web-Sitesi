@@ -516,13 +516,26 @@ body::before {
     gap: 2.5rem;
 }
 
+/* --- HİZMETLERİMİZ KART GÜNCELLEMESİ --- */
 .service-card {
-    background: var(--white);
+    background: var(--bg-cream);
     padding: 2.5rem;
     border-radius: 20px;
-    border: 1px solid #eaeaea;
-    transition: all 0.3s ease;
+
+    /* GÜNCELLEME: Çerçeve rengi ARTIK HER ZAMAN ALTIN SARISI */
+    border: 1px solid var(--gold-accent);
+
+    /* Büyüme efekti için yumuşak geçiş */
+    transition: all 0.4s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+}
+
+.service-card:hover {
+    /* GÜNCELLEME: Üzerine gelince belirgin şekilde BÜYÜR */
+    transform: scale(1.06);
+
+    /* Etrafına altın sarısı, havalı bir gölge vurur */
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
 }
 
 .service-card .icon-box {
@@ -560,21 +573,19 @@ body::before {
     color: var(--text-gray);
 }
 
-/* --- PORTFOLYO (TAM GENİŞLİK, UZUN FOTOĞRAFLAR) --- */
+/* --- PORTFOLYO GÜNCELLEMESİ (ASİMETRİK VE UZUN) --- */
 .portfolio-section {
     background-color: var(--dark-brown);
-    /* Sayfanın TAMAMINI kahverengi yapar */
     width: 100%;
     color: var(--white);
-    padding: 8rem 0;
-    /* Bölümü aşağıya doğru uzatır */
+    /* GÜNCELLEME: Bölümün uzunluğu ciddi şekilde artırıldı */
+    padding: 10rem 0 14rem 0;
 }
 
 .portfolio-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 4rem;
 }
 
 .subtitle {
@@ -600,7 +611,6 @@ body::before {
     font-size: 1.05rem;
 }
 
-/* TEKLİF ALIN BUTONU HEP ALTIN SARISI KALACAK */
 .btn-outline {
     display: inline-block;
     padding: 15px 30px;
@@ -610,6 +620,11 @@ body::before {
     font-size: 0.95rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+
+    /* GÜNCELLEME: BUTONU YUKARI TAŞIYAN SİHİRLİ KODLAR */
+    position: relative;
+    top: -70px;
+    /* Eksi değer butonu yukarı çeker. İstersen -30px, -40px yaparak daha da yukarı alabilirsin. */
 }
 
 .btn-outline:hover {
@@ -618,66 +633,136 @@ body::before {
 
 .portfolio-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    /* GÜNCELLEME: 3 Sütunlu Izgara */
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    /* Fotoğraflar arası boşluk */
+    margin-top: 6rem;
+    align-items: start;
+    /* Resimleri üste hizalar */
 }
 
-/* RESİMLER AŞAĞIYA DOĞRU UZATILDI */
+/* Tüm resimlerin ortak ayarı (Ezilmeyi önler) */
 .gallery-item img {
     width: 100%;
-    height: 550px;
-    /* Fotoğrafların uzunluğunu ayarladık, ezilmez */
     border-radius: 16px;
     object-fit: cover;
-    /* Sündürmeden kırpar */
-    transition: 0.4s;
+    /* Resmi sündürmeden kırpar */
+    transition: all 0.5s ease;
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.gallery-item img:hover {
-    transform: scale(1.02);
-    border-color: var(--gold-accent);
+/* 1. Fotoğraf (Sol): En Uzun ve Aşağıda */
+.gallery-item:nth-child(1) img {
+    height: 700px;
+    transform: translateY(100px);
+    /* Aşağı kaydırıldı */
 }
 
+/* 2. Fotoğraf (Sağ): Orta Boy ve Hafif Yukarıda */
+.gallery-item:nth-child(2) img {
+    height: 600px;
+    transform: translateY(0);
+    /* Normal yerinde */
+}
 
-/* --- REFERANSLAR (ESKİ HALİ - SADECE MARKA LOGOLARI) --- */
+/* 3. Fotoğraf (Orta - GÜNCELLEME): En Kısa ve En Yukarda */
+.gallery-item:nth-child(3) img {
+    height: 500px;
+    /* Diğerlerinden kısa */
+    /* GÜNCELLEME: En yukarda durması için ciddi şekilde yukarı kaydırıldı */
+    transform: translateY(-80px);
+
+    /* 1. ve 2.'nin sağına ve soluna hizalamak için genişletildi */
+    width: calc(100% + 1rem);
+    margin-left: -0.5rem;
+    /* Sağa ve sola eşit taşırarak hizalar */
+}
+
+/* Hover Efektleri (Değişmedi) */
+.gallery-item img:hover {
+    transform: scale(1.03) !important;
+    /* Scale Translate'i ezmemesi için */
+    border-color: var(--gold-accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- REFERANSLAR GÜNCELLEMESİ (KAYAN LOGOLAR / MARQUEE) --- */
 .testimonials-section {
     padding: 6rem 0;
-    background-color: var(--bg-cream);
-}
-
-.brands-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--bg-cream);
-    padding: 2.5rem 2rem;
-    margin-top: 2rem;
-    border-radius: 20px;
+    /* GÜNCELLEME: Arka plan şeffaf, arkadaki sabit TÜM REKLAM yazısı gözüküyor */
+    background-color: transparent;
     position: relative;
-    z-index: 1;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    color: #888;
-    letter-spacing: 3px;
     overflow: hidden;
 }
 
-/* Referans Kutusu Animasyonu */
-.brands-row::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(90deg, #e0e0e0 0%, #e0e0e0 40%, var(--gold-accent) 50%, #e0e0e0 60%, #e0e0e0 100%);
-    background-size: 200% auto;
-    animation: goldShineReverse 3s linear infinite;
-    z-index: -1;
-    border-radius: 22px;
+.testimonials-section .container {
+    position: relative;
+    z-index: 1;
+    /* Logoların yazının üstünde durmasını sağlar */
 }
 
+/* Kayan Alanın Dış Kutusu */
+.brands-marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 2rem 0;
+
+    /* Sağ ve sol kenarlara çok elit bir "silinerek kaybolma" (fade) efekti verir */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Hareket Eden Şerit */
+.brands-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 6rem;
+    /* Logolar arası boşluk */
+    padding-right: 6rem;
+    /* Döngü payı */
+
+    /* İŞTE SİHİR BURADA: 20 Saniyede soldan sağa doğru akar ve sonsuza kadar tekrarlar */
+    animation: scrollLeftToRight 20s linear infinite;
+}
+
+/* İstersen fareyle üzerine gelince kayma dursun diye bu kodu kullanabilirsin */
+.brands-marquee:hover .brands-track {
+    animation-play-state: paused;
+}
+
+/* Logoların Tasarımı (GÜNCELLEME: SİYAH VE SOLGUNLUK KALDIRILDI) */
+.brands-track img {
+    height: 60px;
+    /* Logoların yüksekliği */
+    width: auto;
+    object-fit: contain;
+
+    /* GÜNCELLEME: Siyahlaştırma ve soluklaştırma filtreleri kaldırıldı, logolar tam renkli */
+    transition: all 0.4s ease;
+}
+
+/* Logoların Üzerine Gelince (Hover) Sadece Büyürler (Rengi zaten orijinal) */
+.brands-track img:hover {
+    transform: scale(1.1);
+    /* Hafif büyür */
+}
+
+/* SOLDAN SAĞA KAYMA ANİMASYONU KODU (Değişmedi) */
+@keyframes scrollLeftToRight {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    /* Şeridin ortasından (kopyalardan) başlar */
+    100% {
+        transform: translateX(0);
+    }
+
+    /* Sağa doğru akar */
+}
 
 /* --- İLETİŞİM VE FOOTER (TAM GENİŞLİK KAHVERENGİ) --- */
 .site-footer {
@@ -840,4 +925,97 @@ body::before {
     body::before {
         font-size: 25vw;
     }
+}
+
+/* =========================================
+   ALT SAYFALAR İÇİN LÜKS PROJE KARTLARI (GÜNCELLENDİ)
+========================================= */
+.full-portfolio-section {
+    padding: 10rem 0;
+    /* Bölümü biraz uzattık */
+    background-color: transparent;
+    /* Arka plan yine şeffaf (filigran görünür) */
+}
+
+/* 4-5 Fotoğraf İçin Jilet Gibi 2'li Izgara */
+.masonry-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Jilet gibi 2'li sütun */
+    gap: 3rem;
+    /* Kartlar arası boşluk */
+    margin-top: 6rem;
+}
+
+/* GÜNCELLEME: Her Projenin Lüks Kart Tasarımı */
+.gallery-box {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 600px;
+    /* Tüm fotoğraflar aynı boyda jilet gibi durur */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Ufak, kurumsal çerçeve */
+    transition: all 0.5s ease;
+}
+
+/* Hover'da Çerçeve Altın Sarısı Olur ve Hafif Büyür */
+.gallery-box:hover {
+    transform: translateY(-10px);
+    /* Hafif yukarı kalkma */
+    border-color: var(--gold-accent);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    /* Altın sarısı elit gölge */
+}
+
+.gallery-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-box:hover img {
+    transform: scale(1.05);
+    /* Hover olunca resim içinde hafif büyür */
+}
+
+/* GÜNCELLEME: RESMİN ÜZERİNE BİNEN ELİT AÇIKLAMA PANELLERİ */
+.project-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    /* GÜNCELLEME: Lüks, hafif şeffaf kahverengi bir zemin */
+    background: linear-gradient(0deg, rgba(28, 19, 15, 0.95) 0%, rgba(28, 19, 15, 0.7) 100%);
+    padding: 3rem;
+
+    /* GÜNCELLEME: Yazılar hover olunca elit bir şekilde süzülerek belirir */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.1s;
+    /* Hafif bir gecikme premium hissi verir */
+}
+
+.gallery-box:hover .project-card-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--gold-accent);
+    /* Başlıklar ALTIN SARISI */
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.project-card-content p {
+    color: #f0f0f0;
+    /* Açıklamalar Beyaz/Krem tonlarında */
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 300;
 }
